@@ -1,0 +1,172 @@
+/* step 1: animation of the logo */
+#logo {
+    animation: logo_width 5s, logo_opacity 5s;
+}
+
+@keyframes logo_width {
+    from {width: 25px;}
+    to {width: 475px;}
+}
+
+@keyframes logo_opacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* step 2: body */
+body {
+    font-family: "Poppins", serif; /* body font */
+    /* background image of backup color */
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* step 3: style header - flex, direction and position */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* step 4: style navigation bar - flex and direction */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* step 5: keep visited links the same color */
+a:visited {
+    color: blue;
+}
+
+/* step 6: style the headers in cards */
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.card { /* keep the card with the same radius so that the background color will exceed the card border */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* step 7,8: style the card */
+.card { /*card initial width */
+    width: 450px;
+}
+
+.pricing { /* style the flex-container for cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* step 9: style images in gallery */
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* step 10: style the image gallery flex-container */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* style for larger screens */
+@media screen and (min-width: 900px){
+
+    /* step 11: change header to be a row but on two sides */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* step 12: change the pricing cards to be a row with 275px width */
+    .card {
+        flex-basis: 275px;
+    }
+
+    .pricing {
+        flex-direction: row;
+    }
+
+    /* step 13: make navigation bar sticky on the top */
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+}
+
+/* step 14: reduce the motion of the logo */
+@media screen and (prefers-reduced-motion: reduce){
+    #logo {
+        animation: none;
+    }
+}
+
+/* style the print view */
+@media print {
+    
+    /* step 15,16: change font and turn background image into backup color */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* step 17: change the header to two rows */
+    header {
+        align-items: stretch;
+    }
+
+    #logo { /* center the logo */
+        align-self: center;
+    }
+
+    .nav_links { /* navigation bar style to space around */
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* step 18: style the pricing cards to a row and align to the bottom */
+    .pricing {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    /* step 19: give cards a new border and a new initial size */
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* step 20: remove everything in the gallery */
+    #gallery {
+        display: none;
+    }
+
+    .gallery {
+        display: none;
+    }
+    
+    /* step 21: add thumbs up to the end of the text in cards */
+    .card li:nth-child(2)::after {
+        content: "👍";
+    }
+}
+
+
+
